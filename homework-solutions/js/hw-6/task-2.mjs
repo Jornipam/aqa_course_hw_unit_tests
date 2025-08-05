@@ -12,8 +12,9 @@
   const myPizzasT1 = ['Peperoni', 'Margherita', 'Diablo', 'Vegetarian'];
   const myPizzasT2 = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
 
-let resultUnique = [];
+let resultUnique;
 let resultNull;
+resultUnique = new Array()
 
 const competitorPizzasLowerCase = [];
 const myPizzasТ1LowerCase = [];
