@@ -12,9 +12,10 @@
   const myPizzasT1 = ['Peperoni', 'Margherita', 'Diablo', 'Vegetarian'];
   const myPizzasT2 = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
 
-let resultUnique;
+let resultUnique = [];
 let resultNull;
-resultUnique = new Array()
+let resultT1NotUnique = false;
+let resultT2NotUnique = false;
 
 const competitorPizzasLowerCase = [];
 const myPizzasТ1LowerCase = [];
@@ -39,21 +40,24 @@ for (let nestedArr of myPizzasT2){
 // сравнение  моего массива с конкурентом в поиске уникальных пицц 
 for (const nestedArr of myPizzasТ1LowerCase){
   if (!competitorPizzasLowerCase.includes(nestedArr)){
-    resultUnique.push(nestedArr)
-  }
-  else if (competitorPizzasLowerCase.includes(nestedArr)){
-    resultNull = null
+    resultUnique.push(nestedArr);
+    resultT1NotUnique = true;
   }
 };
+if (!resultT1NotUnique ){
+  resultNull = null
+}
+
 
 for (const nestedArr of myPizzasТ2LowerCase){
   if (!competitorPizzasLowerCase.includes(nestedArr)){
-    resultUnique.push(nestedArr)
-  }
-  else if (competitorPizzasLowerCase.includes(nestedArr)){
-    resultNull = null
+    resultUnique.push(nestedArr);
+    resultT2NotUnique = true;
   }
 };
+if (!resultT2NotUnique ){
+  resultNull = null
+}
 
 console.log(resultUnique)
 console.log(resultNull)
