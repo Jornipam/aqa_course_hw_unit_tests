@@ -5,9 +5,16 @@
   - Например: mergeArrays([1,2], [3,4], [5,6]) // [1,2,3,4,5,6]
   - Решить с использованием Spread operator
 */
-function mergeArrays() {
-  // Ваш код
+function mergeArrays(...arrays) {
+  const arrOfArguments = [];
+  for ( let arg of arrays){
+    arrOfArguments.push(...arg)
+  };
+  console.log(arrOfArguments);
+  return(arrOfArguments);
 }
+mergeArrays([1,2], [3,4], [5,6]);
+
 /*
   2. Devide by _
     - Написать функцию, которая преобразует любое предложение в вот_Такой_Вот_Вид и возвращает его. 
@@ -15,8 +22,17 @@ function mergeArrays() {
     - Пример: I am super engineer => i_Am_Super_Engineer
   */
 function devideBy(sentence) {
-  // Ваш код
-}
+  //приводим к нижнему регистру и разбиваем предложение на слова
+  const words = sentence.toLowerCase().split(' ');
+ // для каждого слова , начиная со второго, в words приводим первую букву к верхнему регистру и прицепляем к ней остаток слова со второй буквы
+  for (let i = 1; i < words.length; i++){
+    words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+  }
+  //соединяем все слова в одно разделенные "_" 
+  return words.join('_');
+};
+console.log(devideBy('Я мозг сломала пока поняла как это надо делать'))
+
 /*
   3. Фибаначчи
     - Напишите функцию fibonacci(n), возвращающую энное число Фибоначчи
@@ -26,7 +42,12 @@ function devideBy(sentence) {
     - Например fibonacci(8) //21
   */
 function fibonacci(n) {
-  // Ваш код
+  if (n < 3){
+    return n - 1;
+  } else {
+    return (fibonacci(n - 1) + fibonacci(n - 2))
+  }
 }
+console.log(fibonacci(8))
 
 export { mergeArrays, fibonacci, devideBy };
