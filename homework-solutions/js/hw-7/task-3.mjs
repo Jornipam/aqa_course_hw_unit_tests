@@ -9,7 +9,14 @@
 */
 
 function digitalRoot(number) {
-  // Ваш код
+  const splitNumber = number.toString().split('').map(str => +str);
+  const sum = splitNumber.reduce((result, element) => result + element, 0);
+  if (sum <= 9) {
+return(sum)
+  }else{
+    return(digitalRoot(sum));
+  }
 }
+console.log(digitalRoot(9928));
 
 export { digitalRoot };

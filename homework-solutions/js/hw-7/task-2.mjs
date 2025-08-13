@@ -4,8 +4,17 @@
 */
 
 function isPalindrom(word) {
-  // Ваш код
+  // 1. разделить слово на массив из букв. 2.перевернуть запись сменой индексов букв 3.сравнить получишееся слово с исходным 
+let result = false
+word = word.toLowerCase()
+let reverseWord = word.toLowerCase().split('').reverse().join('')
+ if (word === reverseWord){
+  result = true
+ }
+  return(result)
 }
+console.log("Слово является палиндромом : " + isPalindrom("Строка"))
+console.log("Слово является палиндромом : " + isPalindrom("Мадам"))
 
 /*
  2. findLongestWords()
@@ -15,7 +24,20 @@ function isPalindrom(word) {
 */
 
 function findLongestWords(sentence) {
-  // Ваш код
-}
+const arrayWords = sentence.split(" ");
+let maxLength = 0;
+
+ for(const element of arrayWords){
+  if (element.length > maxLength){
+    maxLength = element.length
+  }
+ };
+
+const longestWords = arrayWords.filter(element => element.length === maxLength);
+
+return longestWords
+};
+
+console.log(findLongestWords("Вот и найди здесь сааамое длинное слово"));
 
 export { isPalindrom, findLongestWords };
