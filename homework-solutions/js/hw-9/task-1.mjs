@@ -11,18 +11,20 @@
 const character = { name: 'Barney', age: 36, gender: 'male', isQa: true };
 
 // 1
-let keyWithFourChars;
-
+const arrayKey  = Object.keys(character);
+const keyWithFourChars =  arrayKey.filter((el) => el.length === 4 )
+ 
 // 2
-let stringValues;
-
+const arrayValues = Object.values(character);
+let stringValues = arrayValues.filter((el) => typeof el === 'string')
 // 3
 /* Do not touch this part */
 const logSpy = jest.spyOn(console, 'log');
 // ---
 
 // Ваш код
-let keyValuePairs;
+let keyValuePairs={};
+
 
 // 4
 let hasSalaryKey1stOption;
