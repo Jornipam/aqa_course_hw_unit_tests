@@ -12,25 +12,46 @@ const characters = [
   { name: 'Fred', age: 39 },
   { name: 'Jack', age: 49 },
 ];
-
+//1
 function addCharacter(character) {
-  // Ваш код
+ if (character && typeof character === 'object' && 
+      character.name && typeof character.name === 'string' &&
+      character.age && typeof character.age === 'number') {
+        characters.push(character);
+      } else {
+        console.error('Некорректный объект');
+  }
+  return characters
 }
+console.log(addCharacter({name: 'Anna', age: 30}))
 
+//2
 function getCharacter(name) {
-  // Ваш код
+  return characters.find((character) => character.name === name ) || null
 }
+console.log(getCharacter('Fred'))
 
+//3
 function getCharactersByAge(minAge) {
-  // Ваш код
+return characters.filter((el) => el.age >= minAge)
 }
+console.log(getCharactersByAge(40))
 
+//4
 function updateCharacter(name, newCharacter) {
-  // Ваш код
+  const character = getCharacter(name);
+  character.name = newCharacter.name;
+  character.age = newCharacter.age;
+  return characters
 }
+console.log(updateCharacter("Anna", {name: 'Olya', age: 35}))
 
+//5
 function removeCharacter(name) {
-  // Ваш код
+const indexCharacter = characters.findIndex((el) => el.name === name)
+characters.splice(indexCharacter,1)
+return characters
 }
+console.log(removeCharacter('Jack'))
 
 export { characters, addCharacter, updateCharacter, getCharacter, getCharactersByAge, removeCharacter };
