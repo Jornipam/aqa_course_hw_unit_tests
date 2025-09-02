@@ -12,23 +12,35 @@ const characters = [
   { name: 'Fred', age: 39 },
   { name: 'Jack', age: 49 },
 ];
-
-function addCharacter(character) {
-  // Ваш код
+//1
+function addCharacter(array, name, age) {
+  const newObj = {name, age};
+  array.push(newObj)
+  return array
 }
+console.log(addCharacter(characters, 'Anna', 22))
 
-function getCharacter(name) {
-  // Ваш код
+//2
+function getCharacter(name, array) {
+  return array.find((elem) => elem.name === name) ||  null
 }
+console.log(getCharacter('Fred', characters))
 
-function getCharactersByAge(minAge) {
-  // Ваш код
+//3
+function getCharactersByAge(minAge, array) {
+  return array.filter((elem) => elem.age >= minAge)
 }
+console.log(getCharactersByAge(40, characters))
 
-function updateCharacter(name, newCharacter) {
-  // Ваш код
+//4
+function updateCharacter(name, newCharacter, array) {
+  const getChar = getCharacter(name, array)
+  
+  return array
 }
+console.log('Jack', ,characters)
 
+//5
 function removeCharacter(name) {
   // Ваш код
 }

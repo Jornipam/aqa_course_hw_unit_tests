@@ -22,7 +22,7 @@ const vowels = 'aeiou'
 function countVowels(word){
   let countVowels = 0;
 for (const char of word){
-  if (vowels.includes(char)) {
+  if (vowels.includes(char.toLowerCase())) {
       countVowels++;
     }
 }

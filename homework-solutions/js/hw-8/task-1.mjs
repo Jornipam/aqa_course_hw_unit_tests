@@ -49,6 +49,7 @@ some = numbers.some((el) => el > 90);
 console.log(some);
 
 //  8. every - проверьте, что все элементы массива двухзначные //false
+ const arrToString = numbers.map(String)
 every = numbers.every((el,i,arr) => el.length === 2);
 console.log(every);
 
