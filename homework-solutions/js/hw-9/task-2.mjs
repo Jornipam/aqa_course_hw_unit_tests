@@ -20,7 +20,7 @@ function addCharacter(character) {
       character.age && typeof character.age === 'number') {
         characters.push(character);
       } else {
-        console.error('Некорректный объект');
+        throw new Error('Некорректный объект');
   }
   return characters
 }
@@ -28,13 +28,21 @@ console.log(addCharacter({name: 'Anna', age: 30}))
 
 //2
 function getCharacter(name) {
-  return characters.find((character) => character.name === name ) || null
+  if (name.length === 0){
+    throw new Error('invalid character')
+  }else {
+      return characters.find((character) => character.name === name )
+  }
 }
 console.log(getCharacter('Fred'))
 
 //3
 function getCharactersByAge(minAge) {
-return characters.filter((el) => el.age >= minAge)
+  if (typeof minAge != 'number') {
+    throw new Error("invalid character");
+  } else {
+    return characters.filter((el) => el.age >= minAge)
+  }
 }
 console.log(getCharactersByAge(40))
 
@@ -51,7 +59,7 @@ console.log(updateCharacter("Anna", {name: 'Olya', age: 35}))
 function removeCharacter(name) {
 const indexCharacter = characters.findIndex((el) => el.name === name)
   if (indexCharacter === -1) {
-    console.error("character not found");
+    throw new Error("Character not found");
   } else {
     characters.splice(indexCharacter,1)
   }
