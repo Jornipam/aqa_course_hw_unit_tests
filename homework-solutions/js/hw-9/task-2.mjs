@@ -12,6 +12,7 @@ const characters = [
   { name: 'Fred', age: 39 },
   { name: 'Jack', age: 49 },
 ];
+
 //1
 function addCharacter(character) {
  if (character && typeof character === 'object' && 
@@ -49,7 +50,11 @@ console.log(updateCharacter("Anna", {name: 'Olya', age: 35}))
 //5
 function removeCharacter(name) {
 const indexCharacter = characters.findIndex((el) => el.name === name)
-characters.splice(indexCharacter,1)
+  if (indexCharacter === -1) {
+    console.error("character not found");
+  } else {
+    characters.splice(indexCharacter,1)
+  }
 return characters
 }
 console.log(removeCharacter('Jack'))
