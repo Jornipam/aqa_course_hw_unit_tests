@@ -12,6 +12,7 @@ const characters = [
   { name: 'Fred', age: 39 },
   { name: 'Jack', age: 49 },
 ];
+<<<<<<< HEAD
 
 //1
 function addCharacter(character) {
@@ -54,6 +55,35 @@ function updateCharacter(name, newCharacter) {
   return characters
 }
 console.log(updateCharacter("Anna", {name: 'Olya', age: 35}))
+=======
+//1
+function addCharacter(array, name, age) {
+  const newObj = {name, age};
+  array.push(newObj)
+  return array
+}
+console.log(addCharacter(characters, 'Anna', 22))
+
+//2
+function getCharacter(name, array) {
+  return array.find((elem) => elem.name === name) ||  null
+}
+console.log(getCharacter('Fred', characters))
+
+//3
+function getCharactersByAge(minAge, array) {
+  return array.filter((elem) => elem.age >= minAge)
+}
+console.log(getCharactersByAge(40, characters))
+
+//4
+function updateCharacter(name, newCharacter, array) {
+  const getChar = getCharacter(name, array)
+  
+  return array
+}
+console.log('Jack', ,characters)
+>>>>>>> eebc337e0881e62594546c7a27381195b546b7f7
 
 //5
 function removeCharacter(name) {
