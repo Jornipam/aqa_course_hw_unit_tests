@@ -12,6 +12,50 @@ const characters = [
   { name: 'Fred', age: 39 },
   { name: 'Jack', age: 49 },
 ];
+<<<<<<< HEAD
+
+//1
+function addCharacter(character) {
+ if (character && typeof character === 'object' && 
+      character.name && typeof character.name === 'string' &&
+      character.age && typeof character.age === 'number') {
+        characters.push(character);
+      } else {
+        throw new Error('Некорректный объект');
+  }
+  return characters
+}
+console.log(addCharacter({name: 'Anna', age: 30}))
+
+//2
+function getCharacter(name) {
+  if (name.length === 0){
+    throw new Error('invalid character')
+  }else {
+      return characters.find((character) => character.name === name )
+  }
+}
+console.log(getCharacter('Fred'))
+
+//3
+function getCharactersByAge(minAge) {
+  if (typeof minAge != 'number') {
+    throw new Error("invalid character");
+  } else {
+    return characters.filter((el) => el.age >= minAge)
+  }
+}
+console.log(getCharactersByAge(40))
+
+//4
+function updateCharacter(name, newCharacter) {
+  const character = getCharacter(name);
+  character.name = newCharacter.name;
+  character.age = newCharacter.age;
+  return characters
+}
+console.log(updateCharacter("Anna", {name: 'Olya', age: 35}))
+=======
 //1
 function addCharacter(array, name, age) {
   const newObj = {name, age};
@@ -39,10 +83,18 @@ function updateCharacter(name, newCharacter, array) {
   return array
 }
 console.log('Jack', ,characters)
+>>>>>>> eebc337e0881e62594546c7a27381195b546b7f7
 
 //5
 function removeCharacter(name) {
-  // Ваш код
+const indexCharacter = characters.findIndex((el) => el.name === name)
+  if (indexCharacter === -1) {
+    throw new Error("Character not found");
+  } else {
+    characters.splice(indexCharacter,1)
+  }
+return characters
 }
+console.log(removeCharacter('Jack'))
 
 export { characters, addCharacter, updateCharacter, getCharacter, getCharactersByAge, removeCharacter };
