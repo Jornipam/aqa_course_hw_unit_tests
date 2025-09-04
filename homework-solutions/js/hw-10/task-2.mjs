@@ -7,8 +7,20 @@
   Ожидается: { 1: 1, 2: 2, 3: 1, 4: 3, 5: 1 }
 */
 
+const numbers = [1, 2, 2, 3, 4, 4, 4, 5];
+
 function countOccurrences(arr) {
-  // ваш код
+  const obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    const number = arr[i];
+    if (obj[number]) {
+      obj[number] += 1;
+    } else {
+       obj[number] = 1;
+    }
+  }
+  return obj;
 }
+console.log(countOccurrences(numbers))
 
 export { countOccurrences };

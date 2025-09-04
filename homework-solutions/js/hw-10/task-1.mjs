@@ -7,13 +7,13 @@
 
 let qa = {
   name: 'Anna',
-  age:30,
-  salary: 3000,
+  age: 30,
+  salary: 2000,
   getInfo(greetingsWord){
     return `${greetingsWord}, my name is ${this.name}, I'm ${this.age} and my salary is ${this.salary}`
   }
-};
-console.log(qa.getInfo('Hello'))
+}
+//console.log(qa.getInfo('Yeh'))
 
 /*
  2. Changing the context
@@ -25,20 +25,22 @@ console.log(qa.getInfo('Hello'))
 
 let anotherQa = {
   name: 'Alex',
-  age: 25,
-  salary:3100
-};
+  age: 35,
+  salary: 3500,
+}
+
 // Используйте bind с greetingWord "Hello"
-let bindResult = qa.getInfo.bind(anotherQa, 'Hello');
-console.log(bindResult());
+let bindResult = qa.getInfo.bind(anotherQa)('Hello')
+console.log(bindResult)
 
 // Используйте call с greetingWord "Hi"
-let callResult = qa.getInfo.call(anotherQa, 'Hi');
-console.log(callResult);
+let callResult = qa.getInfo.call(anotherQa, 'Hi')
+console.log(callResult)
 
 // Используйте apply с greetingWord "Hey"
-let applyResult =qa.getInfo.call(anotherQa, ['Hey']);
-console.log(applyResult);
+let applyResult = qa.getInfo.apply(anotherQa, ['Hey'])
+console.log(applyResult)
+
 /*
  3. Closures
   - Создайте функцию createCounter(),
@@ -51,17 +53,19 @@ console.log(applyResult);
 */
 
 function createCounter() {
-  let count = 0
-  return () => {
-    ++count;
-  console.log(`Function was called ${count} times`)
+  let count = 0;
+  return function counter(){
+    count += 1;
+    console.log(`Function was called ${count} times`);
+    return count
   }
-};
+}
+
 const functionCallCounter = createCounter();
-console.log(functionCallCounter())
-console.log(functionCallCounter())
-console.log(functionCallCounter)
-console.log(functionCallCounter)
-console.log(functionCallCounter)
+// functionCallCounter()
+// functionCallCounter()
+// functionCallCounter()
+// functionCallCounter()
+// functionCallCounter()
 
 export { qa, bindResult, callResult, applyResult, functionCallCounter, anotherQa };
